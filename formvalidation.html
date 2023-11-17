@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form validation</title>
+<style>
+table{
+background-color:white;
+margin-left:auto;
+margin-right:auto;
+margin-top:1em;
+padding:1em;
+}
+tr,td,th{
+padding:1em;
+text-align:left;
+}
+.center th{
+text-align:center;
+}
+h2{
+text-align:center;
+margin-top:2em;
+background-color:black;
+color:white;
+}
+</style>
+</head>
+<body>
+<h2>FORM VALIDATION</h2>
+<form name="form" action="" method="POST" onsubmit="return validateForm()">
+<table>
+<tr>
+<th>Name</th>
+<td><input type="text" name="fname"></td>
+</tr>
+<tr>
+<th>Email</th>
+<td><input type="email" name="email"></td>
+</tr>
+<tr>
+<th>Mobile</th>
+<td><input type="tel" name="mob"></td>
+</tr>
+<tr>
+<th>Username</th>
+<td><input type="text" name="user"></td>
+</tr>
+<tr>
+<th>Password</th>
+<td><input type="password" name="passcode"></td>
+</tr>
+<tr class="center">
+<th colspan="2"><input type="submit" valur="submit"></th>
+</tr>
+</table>
+</form>
+<script>
+function validateForm(){
+var fname=document.form.fname.value;
+var email=document.form.email.value;
+var mob=document.form.mob.value;
+var user=document.form.user.value;
+var passcode=document.form.passcode.value;
+var re=/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+var ren=/[0-9!@#$%^&*]/;
+var qw=/^(?=.*\d)(?=.*[a-z])(?=.*[@])(?=.*[gmail])(?=.8[.])(?=.*[com])/;
+if(fname==""){
+	alert("enter first name !");
+	document.form.fname.focus();
+	return false;
+	}
+else if(ren.test(fname)){
+	alert("enter valid name!");
+	document.form.fname.focus();
+	return false;
+	}
+if(email==""){
+	alert("Enter email!!");
+	document.form.email.focus();
+	return false;
+	}
+else if(!qw.test(email)){
+	alert("Enter valid mail id!!");
+	document.form.email.focus();
+	return false;
+	}
+if (mob==""){
+	alert("enter mobile number");
+	return false;
+	}
+else if (isNaN(mob)){
+	alert("Enter Valid mobile number");
+	return false;
+	}
+else if(mob.length!=10){
+	alert("enter mobile number with ten digits");
+	return false;
+	}
+if (user==""){
+	alert("enter user name");
+	document.form.user.focus();
+	return false;
+	}
+if(passcode==""||passscode.length<8||!re.test(passcode)){
+	alert("enter minuimum 8 digit password"+'\n'+"atleast one lowercase & uppercase & digit&special character must be included");
+	document.form.passcode.focus();
+	return false;
+	}
+	}
+</script>
+</body>
+</html>
+
